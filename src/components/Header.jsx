@@ -11,57 +11,46 @@ import logoSrc from "../assets/HeaderLogo.png";
 export default function Header() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
-  const [language, setLanguage] = useState("tamil"); 
+  const [language, setLanguage] = useState("tamil");
 
   useEffect(() => {
-    const onScroll = () => {
-      const y = window.scrollY || 0;
-      setScrolled(y > 20);
-      if (mobileOpen && y > 20) setMobileOpen(false);
-    };
+    const onScroll = () => setScrolled(window.scrollY > 20);
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
-  }, [mobileOpen]);
+  }, []);
 
-  const toggleLanguage = () => {
+  const toggleLanguage = () =>
     setLanguage((prev) => (prev === "tamil" ? "english" : "tamil"));
-  };
-
   const languageLabel = language === "tamil" ? "தமிழ்" : "English";
 
   return (
     <>
       <header
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ease-out`}
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ease-out
+          ${
+            scrolled
+              ? "bg-white/60 backdrop-blur-md border-b border-gray-200/40 shadow-md dark:bg-gray-900/60 dark:border-gray-800/40"
+              : "bg-transparent"
+          }`}
         role="banner"
       >
-        <div
-          className={`mx-auto container flex items-center justify-between gap-4
-            px-4 py-3
-            transition-all duration-200
-            ${
-              scrolled
-                ? "bg-white/60 backdrop-blur-md border-b border-gray-200/40 shadow-md dark:bg-gray-900/60 dark:border-gray-800/40"
-                : "bg-transparent"
-            }
-          `}
-        >
+        <div className="w-full flex items-center justify-between px-6 py-3 md:px-10">
           {/* Left: Logo */}
-          <div className="flex items-center gap-3">
-            <a href="/" className="inline-flex items-center" aria-label="Fireline Home">
-              <img
-                src={logoSrc}
-                alt="Fireline தமிழ்"
-                className={`block object-contain transition-all duration-200 ${
-                  scrolled ? "h-10" : "h-12"
-                }`}
-                style={{ width: "auto" }}
-              />
-            </a>
-          </div>
-
-          {/* Center: Nav */}
-          <nav aria-label="Primary" className="hidden md:flex md:items-center md:gap-6">
+          <a href="/" className="inline-flex items-center" aria-label="Fireline Home">
+            <img
+              src={logoSrc}
+              alt="Fireline தமிழ்"
+              className={`object-contain transition-all duration-200 ${
+                scrolled ? "h-10" : "h-12"
+              }`}
+              style={{ width: "auto" }}
+            />
+          </a>
+          
+          <nav
+            aria-label="Primary navigation"
+            className="hidden md:flex items-center gap-8"
+          >
             {[
               { href: "#politics", label: "அரசியல்" },
               { href: "#human-rights", label: "மனித உரிமைகள்" },
@@ -80,9 +69,9 @@ export default function Header() {
           </nav>
 
           {/* Right: Icons */}
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-4">
             {/* Desktop icons */}
-            <div className="hidden md:flex items-center gap-3">
+            <div className="hidden md:flex items-center gap-4">
               {/* Language toggle */}
               <button
                 type="button"
@@ -115,7 +104,7 @@ export default function Header() {
               </button>
             </div>
 
-            {/* Mobile: menu toggle */}
+            {/* Mobile: Menu toggle */}
             <div className="md:hidden">
               <button
                 onClick={() => setMobileOpen((s) => !s)}
@@ -129,15 +118,15 @@ export default function Header() {
           </div>
         </div>
 
-        {/* Mobile Menu */}
+        {/* Mobile Menu (full width) */}
         <div
           className={`md:hidden transition-all duration-200 overflow-hidden ${
             mobileOpen
-              ? "max-h-screen bg-white/70 backdrop-blur-md border-b border-gray-200/40"
+              ? "max-h-screen bg-white/70 backdrop-blur-md border-t border-gray-200/40"
               : "max-h-0"
           }`}
         >
-          <div className="px-4 pb-6 pt-4 space-y-3">
+          <div className="px-6 pb-6 pt-4 space-y-3">
             {[
               { href: "#politics", label: "அரசியல்" },
               { href: "#human-rights", label: "மனித உரிமைகள்" },
@@ -155,7 +144,6 @@ export default function Header() {
               </a>
             ))}
 
-            {/* Mobile icon row */}
             <div className="flex items-center gap-3 pt-3 border-t border-gray-200/40 mt-2">
               {/* Language toggle */}
               <button
@@ -187,7 +175,7 @@ export default function Header() {
         </div>
       </header>
 
-      {/* Spacer to offset fixed header height */}
+      {/* Spacer for fixed header height */}
       <div aria-hidden className="h-16 md:h-20" />
     </>
   );
