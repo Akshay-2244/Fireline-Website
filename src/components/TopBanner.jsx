@@ -33,8 +33,8 @@ export default function TopBanner() {
     position: "fixed",
     left: 0,
     right: 0,
-    top: `${headerHeight}px`, 
-    zIndex: 40, 
+    top: `${headerHeight}px`,
+    zIndex: 40,
     backgroundColor: "#F4BF2F",
     display: "flex",
     justifyContent: "center",
@@ -51,7 +51,6 @@ export default function TopBanner() {
         aria-label="Breaking news banner"
       >
         <div style={{ maxWidth: 1200, width: "100%", display: "flex", gap: 12, alignItems: "center" }}>
-          {/* Live pill */}
           <div style={{ flexShrink: 0 }}>
             <span
               style={{
@@ -67,14 +66,12 @@ export default function TopBanner() {
             </span>
           </div>
 
-          {/* Headline */}
           <div style={{ flex: 1, fontSize: 14, fontWeight: 600, color: "#000", textAlign: "center" }}>
             <span style={{ display: "block", whiteSpace: "normal" }}>
               உடனடி: மைல்கல் சிவில் உரிமைகள் வழக்கில் நீதிமன்ற தீர்ப்பு
             </span>
           </div>
 
-          {/* Close */}
           <div style={{ flexShrink: 0 }}>
             <button
               onClick={() => setClosed(true)}
@@ -96,7 +93,7 @@ export default function TopBanner() {
         </div>
       </div>
 
-    <div aria-hidden style={{ height: bannerHeight }} />
+      <div aria-hidden style={{ height: bannerHeight }} />
     </>
   );
 }
