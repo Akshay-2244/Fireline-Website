@@ -11,17 +11,12 @@ import logoSrc from "../assets/HeaderLogo.png";
 export default function Header() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
-  const [language, setLanguage] = useState("tamil");
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20);
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
-
-  const toggleLanguage = () =>
-    setLanguage((prev) => (prev === "tamil" ? "english" : "tamil"));
-  const languageLabel = language === "tamil" ? "தமிழ்" : "English";
 
   const textColor = scrolled ? "text-white" : "text-black";
 
@@ -69,36 +64,6 @@ export default function Header() {
           </nav>
 
           <div className="flex items-center gap-4">
-            <div className={`hidden md:flex items-center gap-4 ${textColor}`}>
-              <button
-                type="button"
-                onClick={toggleLanguage}
-                aria-label="Toggle language"
-                className={`flex items-center gap-1 p-2 rounded transition-colors ${textColor}`}
-              >
-                <RiGlobalLine size={20} />
-                <span className="text-sm font-medium select-none">
-                  {languageLabel}
-                </span>
-              </button>
-
-              <button
-                type="button"
-                aria-label="Search"
-                className={`p-2 rounded transition-colors ${textColor}`}
-              >
-                <RiSearchLine size={20} />
-              </button>
-
-              <button
-                type="button"
-                aria-label="Profile"
-                className={`p-2 rounded transition-colors ${textColor}`}
-              >
-                <RiAccountCircleLine size={22} />
-              </button>
-            </div>
-
             <div className="md:hidden">
               <button
                 onClick={() => setMobileOpen((s) => !s)}
@@ -136,25 +101,6 @@ export default function Header() {
                 {item.label}
               </a>
             ))}
-
-            <div className="flex items-center gap-3 pt-3 border-t border-gray-700 mt-2 text-white">
-              <button
-                onClick={toggleLanguage}
-                aria-label="Toggle language"
-                className="flex items-center gap-1 p-2 rounded"
-              >
-                <RiGlobalLine size={18} />
-                <span className="text-sm font-medium select-none">
-                  {languageLabel}
-                </span>
-              </button>
-              <button aria-label="Search" className="p-2 rounded">
-                <RiSearchLine size={18} />
-              </button>
-              <button aria-label="Profile" className="p-2 rounded">
-                <RiAccountCircleLine size={20} />
-              </button>
-            </div>
           </div>
         </div>
       </header>
