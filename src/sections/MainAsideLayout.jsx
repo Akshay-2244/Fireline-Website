@@ -259,8 +259,8 @@ export default function MainAsideLayout() {
           </div>
           
           <div className="bg-white rounded shadow-sm p-4">
-            <h4 className="text-lg font-semibold mb-2">செய்தி சந்தா</h4>
-            <p className="text-sm text-gray-600 mb-3">புதிய செய்திகளுக்கு மின்னஞ்சலில் சந்தா செய்யவும்.</p>
+            <h4 className="text-lg font-semibold mb-2">செய்திமடல்</h4>
+            <p className="text-sm text-gray-600 mb-3">தினசரி முக்கிய செய்திகளைப் பெற சந்தா செலுத்துங்கள்</p>
             <form
               onSubmit={(e) => {
                 e.preventDefault();
@@ -283,7 +283,7 @@ export default function MainAsideLayout() {
                 className="w-full border border-gray-200 rounded px-3 py-2 mb-3 focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500"
               />
               <button type="submit" className="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-medium px-3 py-2 rounded">
-                சந்தா செய்யவும்
+                சந்தா செலுத்த
               </button>
             </form>
           </div>
