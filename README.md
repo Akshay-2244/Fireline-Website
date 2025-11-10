@@ -92,7 +92,7 @@ Files that configure tools:
 1. Clone repository:
 
    ```bash
-   git clone <repo-url>
+   git clone https://github.com/Akshay-2244/Fireline-Website.git
    cd Fireline-Website
    ```
 
