@@ -1,8 +1,5 @@
 import { useState, useEffect } from "react";
 import {
-  RiGlobalLine,
-  RiSearchLine,
-  RiAccountCircleLine,
   RiMenu3Line,
   RiCloseLine,
   RiArrowLeftLine,
